@@ -1,0 +1,26 @@
+//Smart Chilaka
+#include <linux/unistd.h>
+#include <sys/syscall.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#define __NR_getPageInfo 339
+
+/*
+ * Execution: test using process pid=123
+ * $ ./assignment2-user1.o  123
+ */
+
+int main(int argc, char *argv[])
+{
+    int pid = 0;
+
+    pid = atoi(argv[1]);   //pid the process from user input
+    syscall(__NR_getPageInfo, pid);
+
+    return 0;
+}
+
+
